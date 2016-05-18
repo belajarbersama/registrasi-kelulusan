@@ -1,0 +1,27 @@
+Data 1:
+	Abraham Reynand
+	abrahamreynand3@gmail.com A1234567890 Pendaftar
+	081322361256
+	01 Januari 1981
+
+Data 2:
+	Adam Nurwahid
+	nurwahidadam1@gmail.com 4d4mnu12w4h1d Pendaftar
+	081322361256
+	25 Februari 1980
+
+Data 3:
+	Harun Hasib
+	harun.hasib@yahoo.com h412unh451b Pendaftar
+	081322361256
+	26 Mei 1981
+
+Data 4:
+	Kevin Aldan
+	kevinaldan@aol.com B03djangan Pendaftar
+	081322361256
+	26 Juli 1980
+
+Data 5:
+	Safwan Said
+	25 Mei 1981
