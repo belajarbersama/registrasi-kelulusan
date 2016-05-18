@@ -38,18 +38,54 @@
                         <div class="row">
 							<div class="col-sm-12">
 								<div class="card-box">
-									<form method="post">
-										<textarea id="berita" name="berita"></textarea>
-									</form>
+                                    <?php
+                                        $attributes = array(
+                                            'method' => 'post'
+                                        );
+
+                                        echo form_open('Panitia_C/buat_berita',$attributes);
+
+                                        ?>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Judul Berita</label>
+                                                <div class="col-md-10">
+                                                    <?php
+
+                                                        $attributes = array(
+                                                            'class' => 'form-control',
+                                                            'name' => 'judul_berita',
+                                                            'id' => 'judul_berita'
+                                                        );
+
+                                                        echo form_input($attributes);
+
+                                                        echo form_error('judul_berita','<div class="alert alert-danger alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>','</div>');
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <br><br><br>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label">Berita</label>
+                                                <div class="col-md-10">
+                                                    <?php
+                                                        $textarea = array(
+                                                            'id' => 'berita',
+                                                            'name' => 'berita'
+                                                        );
+
+                                                        echo form_textarea($textarea);
+                                                    ?>
+                                                </div>
+                                            </div>
+                                            <br><br><br>
+                                            <button type="submit" class="btn btn-success waves-effect waves-light">Submit</button>
+                                        <?php
+
+                                        echo form_close();
+                                    ?>
 								</div>
 							</div>
 						</div>
-
                         <!-- End row -->
-                        
-                        
-
-
                     </div> <!-- container -->
-                               
                 </div> <!-- content -->

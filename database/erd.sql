@@ -6,6 +6,12 @@ CREATE TABLE berita(
 	waktu_buat TIME
 );
 
+ALTER TABLE berita
+ADD CONSTRAINT id_berita_berita_pk PRIMARY KEY(id_berita);
+
+ALTER TABLE berita
+CHANGE id_berita id_berita INT NOT NULL AUTO_INCREMENT;
+
 CREATE TABLE jadwal_tanggal(
 	id_jadwal INT,
 	nama_kegiatan VARCHAR(255),
