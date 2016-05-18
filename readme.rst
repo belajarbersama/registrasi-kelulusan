@@ -1,14 +1,9 @@
 ###################
-What is CodeIgniter
+Aplikasi Registrasi dan Kelulusan Berbasis Web dan SMS Gateway Pada SD Ar-Rafi'
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+SD Ar-Rafi’ merupakan penyelenggara pendidikan di bawah naungan Yayasan Pendidikan Kewiraswastaan Ar-Rafi’ yang terakreditasi A (Amat Baik) dan menyelenggarakan program akselerasi. Dengan akreditasi dan program tersebut jumlah pendaftar peserta didik baru SD Ar-Rafi’ terus meningkat dari tahun ke tahun. Semakin meningkatnya jumlah pendaftar tersebut SD Ar-Rafi’ kerepotan dalam mengelola Penerimaan Peserta Didik Baru (PPDB), pengajuan Nomor Induk Siswa Nasional (NISN), pembayaran Surat Persetujuan Pembayaran (SPP), her-registrasi dan data alumni sehingga mendorong untuk memanfaatkan sistem informasi untuk mendukung keefisiensi dan keefektifan kinerja pegawai SD Ar-Rafi’.
+SD Ar-Rafi’ harus memiliki sistem yang dapat membantu dalam mengelola hal – hal tersebut. Dalam Proyek Akhir ini akan dibuat aplikasi yang menangani pengelolaan PPDB, pengajuan NISN, pembayaran SPP, her-registrasi dan pendataan alumni. Aplikasi ini dinamakan Aplikasi Registrasi dan Kelulusan pada SD Ar-Rafi’ berbasis Web dan SMS Gateway yang nantinya akan digunakan oleh pihak SD Ar-Rafi’ dan orang tua siswa. Dalam pembuatan aplikasi ini dibutuhkan metode yang tepat dan kebutuhan perangkat lunak yang tepat agar memudahkan pengguna. Oleh karena itu, aplikasi ini dibuat dengan menggunakan CodeIgniter sebagai framework bahasa pemrograman PHP, MySQL sebagai perangkat lunak Relational Database Management System (RDBMS) dan Gammu sebagai aplikasi servis pengirim pesan.
 
 *******************
 Release Information

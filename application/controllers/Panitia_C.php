@@ -142,12 +142,13 @@
 		}
 
 		public function lihat_berita(){
-			//$result = $this->Panitia_M->data_berita();
+			$result = $this->Panitia_M->view_data_berita();
 
 			$data = array(
 				'page' => 'Berita',
 				'content' => 'dashboard/panitia/view_berita',
-				'toolbar' => 'Berita'
+				'toolbar' => 'Berita',
+				'data_jadwal' => $result
 			);
 
 			$this->parser->parse('dashboard/index',$data);

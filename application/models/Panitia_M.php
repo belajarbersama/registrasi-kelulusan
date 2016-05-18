@@ -76,8 +76,11 @@
 			return $this->db->affected_rows();
 		}
 
-		public function FunctionName(){
-			# code...
+		public function view_data_berita(){
+			$this->db->select('*');
+			$this->db->from('berita');
+			$query = $this->db->get();
+			return $query->result();
 		}
 
 		public function insert_jadwal_seleksi($nama_seleksi,$sesi,$kelompok,$tgl,$waktu_mulai,$waktu_selesai,$id_ruangan){
