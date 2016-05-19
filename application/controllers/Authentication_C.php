@@ -129,16 +129,10 @@
                     }
 
                     if ($privilege=='Panitia') {
-                        $jumlah = $this->Panitia_M->jumlah_notifikasi();
-                        $notifikasi = $this->Panitia_M->notifikasi();
                         $content = 'dashboard/panitia/dashboard';
                     } elseif ($privilege=='Tata Usaha Bagian Keuangan') {
-                        $jumlah = $this->Panitia_M->jumlah_notifikasi();
-                        $notifikasi = $this->Panitia_M->notifikasi();
                         $content = 'dashboard/keuangan/dashboard';
                     } elseif ($privilege=='Tata Usaha Bagian Kesiswaan') {
-                        $jumlah = $this->Ortu_M->jumlah_notifikasi();
-                        $notifikasi = $this->Ortu_M->notifikasi();
                         $content = 'dashboard/kesiswaan/dashboard';
                     } elseif ($privilege=='Orang Tua') {
                         $masuk_ortu = $this->Authentication_M->masuk_ortu($this->session->userdata('username'),$this->session->userdata('password'));
@@ -154,16 +148,10 @@
                             $this->session->set_userdata($session);
                         }
 
-                        $jumlah = $this->Ortu_M->jumlah_notifikasi();
-                        $notifikasi = $this->Ortu_M->notifikasi();
                         $content = 'dashboard/orangtua/dashboard';
                     } elseif ($privilege=='Operator') {
-                        $jumlah = $this->Ortu_M->jumlah_notifikasi();
-                        $notifikasi = $this->Ortu_M->notifikasi();
                         $content = 'dashboard/operator/dashboard';
                     } elseif ($privilege=='Kepala Sekolah') {
-                        $jumlah = $this->Ortu_M->jumlah_notifikasi();
-                        $notifikasi = $this->Ortu_M->notifikasi();
                         $content = 'dashboard/kepsek/dashboard';
                     } elseif ($privilege=='Pendaftar') {
                         $masuk_pendaftar = $this->Authentication_M->masuk_pendaftar($this->session->userdata('username'),$this->session->userdata('password'));
@@ -181,17 +169,13 @@
                             $this->session->set_userdata($session);
                         }
                         $content = 'dashboard/pendaftar/dashboard';
-
-                        $no_hp = $this->session->userdata('no_hp');
-                        $jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-                        $notifikasi = $this->Pendaftar_M->notifikasi($this->session->userdata('no_hp'));
                     }
                     
                     $data = array(
                         'page' => 'Dashboard',
                         'content' => $content,
-                        'jumlah' => $jumlah,
-                        'notifikasi' => $notifikasi
+                        'jumlah' => 0,
+                        'notifikasi' => 0
                     );
 
                     $this->parser->parse('dashboard/index',$data);

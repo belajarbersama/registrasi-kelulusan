@@ -53,7 +53,6 @@
 		}
 
 		public function edit_jadwal_ppdb($id_jadwal,$nama_kegiatan,$keterangan,$tgl_mulai,$tgl_selesai,$ta,$status){
-
 			$data = array(
 				'nama_kegiatan' => $nama_kegiatan,
 				'keterangan' => $keterangan,
@@ -142,7 +141,8 @@
 
 		public function data_jadwal_daftar_ulang(){
 			$this->db->select('*');
-			$this->db->from('jadwal_daftar_ulang');
+			$this->db->from('jadwal_tanggal');
+			$this->db->where('jenis','Daftar Ulang');
 			$query = $this->db->get();
 			return $query->result();
 		}
@@ -154,10 +154,11 @@
 				'tgl_mulai' => $tgl_mulai,
 				'tgl_selesai' => $tgl_selesai,
 				'ta' => $ta,
-				'status' => 'Belum'
+				'status' => 'Belum',
+				'jenis' => 'Daftar Ulang'
 			);
 
-			$this->db->insert('jadwal_daftar_ulang',$data);
+			$this->db->insert('jadwal_tanggal',$data);
 			$result = $this->db->affected_rows();
 			return $result;
 		}
@@ -168,7 +169,7 @@
 			$ta = ($tahun).'/'.($tahun+1);
 
 			$this->db->select('*');
-			$this->db->from('jadwal_daftar_ulang');
+			$this->db->from('jadwal_tanggal');
 			$where = array(
 				'id_jadwal' => $id_jadwal,
 				'ta' => $ta
@@ -179,25 +180,25 @@
 		}
 
 		public function edit_jadwal_daftar_ulang($id_jadwal,$nama_kegiatan,$keterangan,$tgl_mulai,$tgl_selesai,$ta,$status){
-
 			$data = array(
 				'nama_kegiatan' => $nama_kegiatan,
 				'keterangan' => $keterangan,
 				'tgl_mulai' => $tgl_mulai,
 				'tgl_selesai' => $tgl_selesai,
 				'ta' => $ta,
-				'status' => $status
+				'status' => $status,
+				'jenis' => 'Daftar Ulang'
 			);
 
 			$this->db->where('id_jadwal', $id_jadwal);
-			$this->db->update('jadwal_daftar_ulang', $data);
+			$this->db->update('jadwal_tanggal', $data);
 			$query = $this->db->affected_rows();
 			return $query;
 		}
 
 		public function delete_jadwal_daftar_ulang($id_jadwal){
 			$this->db->where('id_jadwal', $id_jadwal);
-			$this->db->delete('jadwal_daftar_ulang');
+			$this->db->delete('jadwal_tanggal');
 			return $this->db->affected_rows();
 		}
 

@@ -39,10 +39,28 @@ BEGIN
 	SET v_no_pendaftaran = no_pendaftaran();
 	SET v_no_pendaftaran = v_no_pendaftaran;
 
-	INSERT INTO buku_tamu VALUES (v_id_buku_tamu,v_nama,v_alamat,v_no_hp,v_email,v_asal);
 	INSERT INTO akun (username, password, privilege, status, email) VALUES (v_email,md5(v_no_hp),'Pendaftar','Proses',v_email);
-	INSERT INTO formulir VALUES (v_no_pendaftaran,CURDATE(),YEAR(CURDATE()),'Proses',v_email);
+	INSERT INTO buku_tamu VALUES (v_id_buku_tamu,v_nama,v_alamat,v_no_hp,v_email,v_asal);
+	INSERT INTO formulir VALUES (v_no_pendaftaran,CURDATE(),'Proses',v_email);
 	INSERT INTO ket_siswa (no_hp,no_pendaftaran) VALUES (v_no_hp,v_no_pendaftaran);
+END;
+$
+
+DELIMITER $
+CREATE PROCEDURE proc_insert_ket_asal(
+	IN v_asal_anak ENUM('PG','TK','RA','PAUD','Lainnya'),
+	IN v_nama_asal VARCHAR(50),
+	IN v_no_tahun_sk VARCHAR(50),
+	IN v_lama_belajar INT,
+	IN v_tgl_terima DATE,
+	IN v_no_pendaftaran VARCHAR(20),
+	IN v_no_hp VARCHAR(13)
+)
+BEGIN
+	INSERT INTO asal_mula VALUES (v_asal_anak,v_nama_asal,v_no_tahun_sk,v_lama_belajar,v_tgl_terima,v_no_pendaftaran);
+	INSERT INTO pembayaran (total_bayar,status,jenis,no_pendaftaran) VALUES (350000,'Belum','Psikotes',v_no_pendaftaran);
+	INSERT INTO notifikasi (jenis,ringkasan,keterangan,tanggal,jam,status,privilege) VALUES ('Pembayaran','Pembayaran Administrasi Psikotes','Untuk mencetak dan mengikuti proses seleksi silakan melakukan pembayaran psikotes',CURDATE(),CURTIME(),'Belum','Pendaftar');
+	INSERT INTO outbox (DestinationNumber,TextDecoded) VALUES (v_no_hp,'Untuk mencetak dan mengikuti proses seleksi silakan melakukan pembayaran psikotes');
 END;
 $
 

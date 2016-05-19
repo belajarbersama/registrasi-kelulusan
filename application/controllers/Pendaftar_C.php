@@ -8,14 +8,11 @@
 		}
 
 		public function dashboard(){
-			$no_hp = $this->session->userdata('no_hp');
-			$jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-			$notifikasi = $this->Pendaftar_M->notifikasi($no_hp);
 			$data = array(
 				'page' => 'Dashboard',
 				'content' => 'dashboard/pendaftar/dashboard',
-				'jumlah' => $jumlah,
-				'notifikasi' => $notifikasi
+				'jumlah' => 0,
+				'notifikasi' => 0
 			);
 
 			$this->parser->parse('dashboard/index',$data);
@@ -41,17 +38,14 @@
 		public function form_ket_siswa(){
 			$no_pendaftaran = $this->session->userdata('no_pendaftaran');
 			$result = $this->Pendaftar_M->cek_data_siswa($no_pendaftaran);
-			$no_hp = $this->session->userdata('no_hp');
-			$jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-            $notifikasi = $this->Pendaftar_M->notifikasi($no_hp);
 			
 			$data = array(
 				'page' => 'Data Siswa',
 				'content' => 'dashboard/pendaftar/form_data_siswa',
 				'toolbar' => 'Data Siswa',
 				'no_pendaftaran' => $result,
-				'jumlah' => $jumlah,
-				'notifikasi' => $notifikasi
+				'jumlah' => 0,
+				'notifikasi' => 0
 			);
 			$this->parser->parse('dashboard/index',$data);
 		}
@@ -154,8 +148,8 @@
 				$no_pendaftaran = $this->session->userdata('no_pendaftaran');
 				$nama_ayah = $this->Pendaftar_M->cek_data_ortu($no_pendaftaran);
 				$no_hp = $this->session->userdata('no_hp');
-				$jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-                $notifikasi = $this->Pendaftar_M->notifikasi($no_hp);
+				$jumlah = 0;
+                $notifikasi = 0;
 				$data = array(
 					'page' => 'Data Orang Tua',
 					'content' => 'dashboard/pendaftar/form_data_ortu',
@@ -206,7 +200,7 @@
             	$id_ortu = $this->session->userdata('no_identitas');
             	$no_hp = $this->session->userdata('no_hp');
 
-            	$result = $this->Pendaftar_M->insert_data_ortu($id_ortu,$nama_ayah,$nama_ibu,$pdd_ayah,$pdd_ibu,$pekerjaan_ayah,$nama_perusahaan_ayah,$alamat_perusahaan_ayah,$email_kantor_ayah,$pekerjaan_ibu,$nama_perusahaan_ibu,$alamat_perusahaan_ibu,$email_kantor_ibu,$no_pendaftaran,$no_hp);
+            	$result = $this->Pendaftar_M->insert_data_ortu($id_ortu,$nama_ayah,$nama_ibu,$pdd_ayah,$pdd_ibu,$pekerjaan_ayah,$nama_perusahaan_ayah,$alamat_perusahaan_ayah,$email_kantor_ayah,$pekerjaan_ibu,$nama_perusahaan_ibu,$alamat_perusahaan_ibu,$email_kantor_ibu,$no_pendaftaran);
 
 
             	if ($result>0) {
@@ -230,8 +224,8 @@
 			} else {
 				$data_wali = $this->Pendaftar_M->cek_data_wali($no_pendaftaran);
 				$no_hp = $this->session->userdata('no_hp');
-				$jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-                $notifikasi = $this->Pendaftar_M->notifikasi($no_hp);
+				$jumlah = 0;
+                $notifikasi = 0;
 				$data = array(
 					'page' => 'Data Wali',
 					'content' => 'dashboard/pendaftar/form_data_wali',
@@ -310,19 +304,21 @@
 		public function form_ket_asal(){
 			$no_pendaftaran = $this->session->userdata('no_pendaftaran');
 			$result = $this->Pendaftar_M->cek_data_ortu($no_pendaftaran);
+			$data_asal = $this->Pendaftar_M->cek_data_asal_mula($no_pendaftaran);
 
 			if ($result[0]->nama_ayah!="") {
 				$no_pendaftaran = $this->Pendaftar_M->cek_data_asal_mula($no_pendaftaran);
 				$no_hp = $this->session->userdata('no_hp');
-				$jumlah = $this->Pendaftar_M->jumlah_notifikasi($no_hp);
-                $notifikasi = $this->Pendaftar_M->notifikasi($no_hp);
+				$jumlah = 0;
+                $notifikasi = 0;
 				$data = array(
 					'page' => 'Asal Mula',
 					'content' => 'dashboard/pendaftar/form_data_asal',
 					'toolbar' => 'Data Asal Mula',
 					'no_pendaftaran' => $no_pendaftaran,
 					'jumlah' => $jumlah,
-					'notifikasi' => $notifikasi
+					'notifikasi' => $notifikasi,
+					'data_asal' => $data_asal
 				);
 				$this->parser->parse('dashboard/index',$data);
 			} else {
@@ -356,7 +352,7 @@
 
             	$result = $this->Pendaftar_M->insert_data_asal($asal_anak,$nama_asal,$no_tahun_sk,$lama_belajar,$tanggal_terima,$no_pendaftaran,$no_hp);
 
-            	if ($result>0) {
+            	if ($result>=0) {
             		$this->session->set_flashdata('pesan','<div class="alert alert-success alert-dismissable"> <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>Terima Kasih telah mengisi formulir! Silakan melakukan pembayaran Psikotes untuk mendapat kartu seleksi.</div>');
             		redirect('Pendaftar_C/form_ket_asal');
             	} else {

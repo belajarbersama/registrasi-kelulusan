@@ -16,23 +16,6 @@ $('#edit_jadwal').on('shown.bs.modal', function (event) {
 	modal.find('#id_jadwal').val(id);
 });
 
-$('#edit_jadwal_daftar_ulang').on('shown.bs.modal', function (event) {
-	var button = $(event.relatedTarget);
-	var id = button.data('id');
-	var keterangan = button.data('keterangan');
-	var mulai = button.data('mulai');
-	var selesai = button.data('selesai');
-	var nama_kegiatan = button.data('nama-kegiatan');
-	var status = button.data('status');
-	var modal = $(this);
-	modal.find('.modal-title').text('Edit Jadwal');
-	modal.find('#nama_kegiatan').val(nama_kegiatan);
-	modal.find('#keterangan').val(keterangan);
-	modal.find('#mulai').val(mulai);
-	modal.find('#selesai').val(selesai);
-	modal.find('#status').val(status);
-	modal.find('#id_jadwal').val(id);
-});
 
 $('#modal_edit_jadwal').on('shown.bs.modal', function (event) {
 	var button = $(event.relatedTarget);

@@ -102,7 +102,7 @@
                                                             data-selesai="<?php echo $value->tgl_selesai;?>"
                                                             data-status="<?php echo $value->status;?>"
                                                             data-toggle="modal"
-                                                            data-target="#edit_jadwal_daftar_ulang"
+                                                            data-target="#edit_jadwal"
                                                             class="btn btn-default waves-effect waves-light"
                                                         ><i class="fa fa-pencil "></i>
                                                      <span></span></a>
@@ -139,7 +139,7 @@
                 <!-- ============================================================== -->
                 <!-- Modal EDIT Jadwal Daftar Ulang-->
                 <!-- ============================================================== -->
-                <div id="edit_jadwal_daftar_ulang" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div id="edit_jadwal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog"> 
                         <div class="modal-content">
                             <?php

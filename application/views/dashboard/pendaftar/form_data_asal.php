@@ -33,7 +33,7 @@
 									<h4 class="m-t-0 header-title"><b>{toolbar}</b></h4>
 									<div class="row">
                                         <?php
-                                            if ($no_pendaftaran!="") {
+                                            if (!empty($data_asal)) {
                                                 ?>
                                                 <h1><small>Data Asal Telah Diinput</small></h1>
                                                 <button class="btn btn-default waves-effect waves-light">Tambah Data</button>

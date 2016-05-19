@@ -32,7 +32,7 @@
 			return $result;
 		}
 
-		public function insert_data_ortu($id_ortu,$nama_ayah,$nama_ibu,$pdd_ayah,$pdd_ibu,$pekerjaan_ayah,$nama_perusahaan_ayah,$alamat_perusahaan_ayah,$email_kantor_ayah,$pekerjaan_ibu,$nama_perusahaan_ibu,$alamat_perusahaan_ibu,$email_kantor_ibu,$no_pendaftaran,$no_hp){
+		public function insert_data_ortu($id_ortu,$nama_ayah,$nama_ibu,$pdd_ayah,$pdd_ibu,$pekerjaan_ayah,$nama_perusahaan_ayah,$alamat_perusahaan_ayah,$email_kantor_ayah,$pekerjaan_ibu,$nama_perusahaan_ibu,$alamat_perusahaan_ibu,$email_kantor_ibu,$no_pendaftaran){
 
 			$data = array(
 				'id_ortu'=>$id_ortu, 'nama_ayah'=>$nama_ayah, 'nama_ibu'=>$nama_ibu, 'pdd_ayah'=>$pdd_ayah,
@@ -40,7 +40,7 @@
 				'nama_perusahaan_ayah'=>$nama_perusahaan_ayah, 'alamat_perusahaan_ayah'=>$alamat_perusahaan_ayah,
 				'email_kantor_ayah'=>$email_kantor_ayah, 'pekerjaan_ibu'=>$pekerjaan_ibu,
 				'nama_perusahaan_ibu'=>$nama_perusahaan_ibu, 'alamat_perusahaan_ibu'=>$alamat_perusahaan_ibu,
-				'email_kantor_ibu'=>$email_kantor_ibu, 'no_pendaftaran'=>$no_pendaftaran, 'no_hp'=>$no_hp
+				'email_kantor_ibu'=>$email_kantor_ibu, 'no_pendaftaran'=>$no_pendaftaran
 			);
 
 			$this->db->insert('ket_ortu',$data);
@@ -66,27 +66,10 @@
 		}
 
 		public function insert_data_asal($asal_anak,$nama_asal,$no_tahun_sk,$lama_belajar,$tanggal_terima,$no_pendaftaran,$no_hp){
-			$data = array(
-				'asal_anak' => $asal_anak,
-				'nama_asal' => $nama_asal,
-				'no_tahun_sk' => $no_tahun_sk,
-				'lama_belajar' => $lama_belajar,
-				'tgl_terima' => $tanggal_terima,
-				'no_pendaftaran' => $no_pendaftaran
-			);
-
-			$notifikasi = array(
-				'no_pendaftaran' => $no_pendaftaran,
-				'no_hp' => $no_hp,
-				'keterangan' => 'Silakan melakukan pembayaran administrasi psikotest',
-				'jenis' => 'pembayaran',
-				'status' => 'Belum'
-			);
-
-			$this->db->insert('asal_mula', $data);
-			$this->db->insert('notifikasi_pendaftar',$notifikasi);
-			$query = $this->db->affected_rows();
-			return $query;
+			$sql = "CALL proc_insert_ket_asal('".$asal_anak."','".$nama_asal."','".$no_tahun_sk."','".$lama_belajar."','".$tanggal_terima."','".$no_pendaftaran."','".$no_hp."')";
+			$query = $this->db->query($sql);
+			$run = $this->db->affected_rows();
+			return $run;
 		}
 
 		public function cek_data_siswa($no_pendaftaran){
